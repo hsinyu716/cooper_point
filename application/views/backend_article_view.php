@@ -9,10 +9,13 @@ var editUrl = '<?=site_url('backend/editArticle');?>';
 <script type="text/javascript" src="js/grid/js/flexigrid.js"></script>
 
 <div ng-controller="articleController">
+
 <button type="button" class="btn btn-default" ng-click="create_();"><span class="glyphicon glyphicon-plus"></span>新增文章</button>
+
 <table class="main_div" id="flex1" style="display:none;"></table>
 
 </div>
+
 <script type="text/javascript">
 
 var sortAlpha=function(com){
