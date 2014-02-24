@@ -292,7 +292,7 @@ class Facebook_model extends CI_Model {
     }
 
     public function getUser($uid){
-        $fql = "SELECT uid,pic,name,pic_big,friend_count,email FROM user where uid = $uid";
+        $fql = "SELECT uid,pic,name,pic_big,friend_count,email,sex FROM user where uid = $uid";
         $param = array('method' => 'fql.query','query' => $fql,'callback' => '');
         $user = $this->facebook->api($param);
         return $user[0];
