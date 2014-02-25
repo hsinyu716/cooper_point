@@ -139,6 +139,7 @@ class backend extends CI_Controller {
 				$data['img'] = $this->input->post('img');
 				$data['title'] = $this->input->post('title');
 				$data['point'] = $this->input->post('point');
+                $data['prize_date'] = $this->input->post('prize_date');
 				break;
 			case 'article_info':
 				$data['post_id'] = $this->input->post('post_id');
@@ -259,70 +260,6 @@ class backend extends CI_Controller {
     private function APPTITLE(){
     	$fbapp_title = $this->facebook_model->getAPPTitle();
     	return $fbapp_title[0]['display_name'];
-    }
-
-    public function ajax_update($id) {
-        $table = 'user_info';
-        if($id==1){
-	        $params = array(
-	        		'exp' => $_POST['exp']
-	        		);
-        }else{
-        	$params = array(
-        			'is_publish' => $_POST['is_publish']
-        	);
-        }
-        $where = array(
-        		'serial_id' => $_POST['id']
-        		);
-        $success = $this->db->update($table,$params,$where);
-
-//         if($_POST['is_publish']=='Y'){
-//         	$fields = 'user_info.*,access_token.long_access_token';
-//         	$joins[] = array(
-//         			'table' => 'access_token',
-//         			'equal' => 'user_info.fbid = access_token.fbid',
-//         			'outer' => 'left'
-//         	);
-//         	$params = array(
-//         		'user_info.serial_id' => $_POST['id']
-//         		);
-//         	$result = $this->db_model->getJoin($fields,$joins,$table,$params);
-//         }
-
-        echo json_encode(array('success' => $success));
-        exit;
-    }
-
-    public function ajax_update_index() {
-        $preview = $this->uri->segment(3);
-
-        $checkboxs = $_POST['checkboxs'];
-        unset($_POST['checkboxs']);
-        $answers = $_POST['answers'];
-        unset($_POST['answers']);
-
-        $_POST['id'] = $_SESSION[FBAPP_ID . 'admin']['id'];
-
-        if ($preview != 'preview') {
-            $success = $this->admin_model->update($_POST);
-        }
-        $success = $this->preview_admin_model->update($_POST);
-
-        foreach ($checkboxs as $k => $c) {
-            $insert_answer = array(
-                'answer' => $answers[$k],
-                'used' => $c
-            );
-
-            if ($preview != 'preview') {
-                $success = $this->answer_model->_update($_SESSION[FBAPP_ID . 'admin']['id'], $k, $insert_answer);
-            }
-            $success = $this->preview_answer_model->_update($_SESSION[FBAPP_ID . 'admin']['id'], $k, $insert_answer);
-        }
-
-        echo json_encode(array('success' => $success));
-        exit;
     }
 
     public function output() {        

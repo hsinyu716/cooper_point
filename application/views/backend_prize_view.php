@@ -4,6 +4,7 @@ var createUrl = '<?=site_url('backend/createPrize');?>';
 var editUrl = '<?=site_url('backend/editPrize');?>';
 var orderUrl = '<?=site_url('backend/setOrder');?>';
 var point = 0;
+var prize = [];
 
 $(function() {
 });

@@ -166,6 +166,7 @@ backend.controller("prizeController",function($scope,$http){
 	$scope.prizes = prizes;
 	
 	$scope.point = point;
+	$scope.prize_data = prize.prize_data;
 	
 	$scope.back_ = function(){
 		location.href=prizeUrl;

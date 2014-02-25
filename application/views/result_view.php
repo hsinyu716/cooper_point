@@ -27,6 +27,7 @@ $(function(){
 			<div>{{pr.title}}</div>
 			<div><img height="200" src="{{pr.img}}" /></div>
 			<button ng-click="exchange(pr.serial_id,pr.point)">{{pr.point}} 點兌換</button>
+			<div>{{pr.prize_date}}抽獎</div>
 		</div>
 	</div>
 

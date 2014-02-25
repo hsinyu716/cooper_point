@@ -25,8 +25,13 @@ $(function(){
 	        }
 	    });
 	});
+
+	$('#prize_date').datepicker({
+		dateFormat: "yy/mm/dd"
+	});
 });
 
+var prize = <?= json_encode($prize); ?>;
 var saveUrl = '<?=site_url('backend/save');?>';
 var prizeUrl = '<?=site_url('backend/prize');?>';
 
@@ -58,6 +63,11 @@ var point = '<?=$prize['point'];?>';
 	<div class="input-group">
 		<span class="input-group-addon">兌換點數：</span>
 		<input type="text" id="point" ng-model="point" name="point" numbers-only="numbers-only"  class="required form-control"/>
+	</div>
+	<br/>
+	<div class="input-group">
+		<span class="input-group-addon">抽獎日期：</span>
+		<input type="text" id="prize_date" ng-model="prize_date" name="prize_date" class="required form-control"/>
 	</div>
 </form>
 <br/>
