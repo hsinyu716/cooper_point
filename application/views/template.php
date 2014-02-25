@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="<?= WEB_HOST ?>bootstrap/css/bootstrap.min.css">
         <script src="<?= WEB_HOST ?>js/angular.min.js"></script>
         <script type="text/javascript" src="<?= WEB_HOST ?>js/controller.js" ></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.0rc3/angular-sanitize.min.js" ></script>
         
         <script type="text/javascript" src="<?= WEB_HOST ?>js/toastr/toastr.js" ></script>
         <link href="<?= WEB_HOST ?>js/toastr/toastr.css" rel="stylesheet" type="text/css" />

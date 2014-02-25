@@ -140,6 +140,19 @@ class backend extends CI_Controller {
 				$data['title'] = $this->input->post('title');
 				$data['point'] = $this->input->post('point');
                 $data['prize_date'] = $this->input->post('prize_date');
+                $descr = $this->input->post('descr');
+                $descr = str_replace('<br>','',$descr);
+                if(!strpos($descr,'target="_blank"')):
+                    $descr = str_replace('a ', 'a target="_blank" ', $descr);
+                endif;
+                $str = substr($descr,strpos($descr,'>')+1,-4);
+                $strs = explode(',',$str);
+                if(sizeof($strs)==2):
+                    $descr = str_replace($str,$strs[0],$descr);
+                    $descr = str_replace($strs[0].'</a>',$strs[1].'</a>',$descr);
+                endif;
+
+                $data['descr'] = $descr;
 				break;
 			case 'article_info':
 				$data['post_id'] = $this->input->post('post_id');
@@ -189,7 +202,7 @@ class backend extends CI_Controller {
     		
     	$page = isset($_POST['page']) ? $_POST['page'] : 1;//頁數
     	$rp = isset($_POST['rp']) ? $_POST['rp'] : 10;//每頁顯示幾筆
-    	$sortname = isset($_POST['sortname']) ? $_POST['sortname'] : 'name';//預設根據欄位作排列
+    	$sortname = isset($_POST['sortname']) ? $_POST['sortname'] : 'end_time';//預設根據欄位作排列
     	$sortorder = isset($_POST['sortorder']) ? $_POST['sortorder'] : 'desc';//預設排列方法
     	$query = isset($_POST['query']) ? $_POST['query'] : false;//搜尋條件字串
     	$qtype = isset($_POST['qtype']) ? $_POST['qtype'] : false;//搜尋欄位
@@ -203,13 +216,18 @@ class backend extends CI_Controller {
     			}
     		}
     	}
-    		
+
+        $sortArray = array();
+        foreach($rows AS $key => $row){
+            $sortArray[$key] = $row[$sortname];
+        }
+
     	$sortMethod = SORT_ASC;
     	if($sortorder == 'desc'){
     		$sortMethod = SORT_DESC;
     	}
     		
-    	array_multisort($rows, $sortMethod);
+    	array_multisort($sortArray, $sortMethod, $rows);
     		
     	$total = count($rows);
     	$rows = array_slice($rows,($page-1)*$rp,$rp);

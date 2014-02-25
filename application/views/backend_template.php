@@ -18,6 +18,13 @@
         <link rel="stylesheet" href="<?= WEB_HOST ?>bootstrap/css/bootstrap.css">
         <script src="<?= WEB_HOST ?>js/angular.min.js"></script>
         <script type="text/javascript" src="<?= WEB_HOST ?>js/controller.js" ></script>
+
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-sanitize.min.js'></script>
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.1.2/textAngular.min.js"></script> -->
+        <script src="<?= WEB_HOST ?>js/angular.textAngular.js"></script>
+<link rel='stylesheet prefetch' href='//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
+
+        
         
         <script type="text/javascript" src="<?= WEB_HOST ?>js/toastr/toastr.js" ></script>
         <link href="<?= WEB_HOST ?>js/toastr/toastr.css" rel="stylesheet" type="text/css" />

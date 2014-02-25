@@ -35,22 +35,21 @@ var prize = <?= json_encode($prize); ?>;
 var saveUrl = '<?=site_url('backend/save');?>';
 var prizeUrl = '<?=site_url('backend/prize');?>';
 
-var point = '<?=$prize['point'];?>';
 </script>
 
 <div ng-controller="prizeController">
 
 <form id="form" name="form" class="css-form" novalidate style="width:400px;">
 	<input type="hidden" name="table" value="prize_info"/>
-	<input type="hidden" name="serial_id" value="<?=$prize['serial_id'];?>"/>
+	<input type="hidden" name="serial_id" value="{{prize.serial_id}}"/>
 	<div class="input-group">
 		<span class="input-group-addon">獎品標題：</span>
-		<input type="text" id="title" name="title" value="<?=$prize['title']?>" alt="請輸入獎品標題" class="required form-control"/>
+		<input type="text" id="title" name="title" value="{{prize.title}}" alt="請輸入獎品標題" class="required form-control"/>
 	</div>
 	<br/>
 	<div class="input-group">
 		<span class="input-group-addon">獎品圖片：</span>
-		<input type="text" id="img" name="img" value="<?=$prize['img']?>" alt="請上傳獎品圖片" class="required form-control"/>
+		<input type="text" id="img" name="img" value="{{prize.img}}" alt="請上傳獎品圖片" class="required form-control"/>
 	</div>
 	<div class="upload_div">
 		<div id="fileToUploadDivweb">
@@ -67,8 +66,19 @@ var point = '<?=$prize['point'];?>';
 	<br/>
 	<div class="input-group">
 		<span class="input-group-addon">抽獎日期：</span>
-		<input type="text" id="prize_date" ng-model="prize_date" name="prize_date" class="required form-control"/>
+		<input type="text" id="prize_date" value="{{prize.prize_date}}" name="prize_date" class="required form-control"/>
 	</div>
+
+	<style>
+	.ta-editor {
+	  min-height: 200px;
+	  height: auto;
+	  overflow: auto;
+	  font-family: inherit;
+	  font-size: 100%;
+	}
+	</style>
+	<div text-angular="text-angular" name="descr" ng-model="htmlcontent" ta-toolbar="[['insertLink', 'unlink']]"></div>
 </form>
 <br/>
 <button type="button" class="btn btn-default" ng-click="submit_();"><span class="glyphicon glyphicon-save"></span>送出</button>

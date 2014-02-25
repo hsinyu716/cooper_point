@@ -1,5 +1,4 @@
 <script type="text/javascript" src="js/jquery.upload-1.0.2.min.js"></script>
-
 <script>
 var prizes = '';
 var point = 0;
@@ -68,7 +67,21 @@ var prize = [];
 		<span class="input-group-addon">抽獎日期：</span>
 		<input type="text" id="prize_date" ng-model="prize_date" name="prize_date" class="required form-control"/>
 	</div>
+
+<style>
+.ta-editor {
+  min-height: 200px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+}
+</style>
+
+<div text-angular="text-angular" name="descr" ng-model="htmlcontent" ta-toolbar="[['insertLink', 'unlink']]"></div>
+<span></span>
 </form>
+
 <br/>
 <button type="button" class="btn btn-default" ng-click="submit_();"><span class="glyphicon glyphicon-save"></span>送出</button>
 <button type="button" class="btn btn-default" ng-click="back_();"><span class="glyphicon glyphicon-remove"></span>取消</button>

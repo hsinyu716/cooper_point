@@ -49,8 +49,8 @@ var main = function(){
         		searchitems : [
         			{display: 'fbid', name : 'fbid', isdefault: true},
         			],
-        		sortname: "ID",
-        		sortorder: "asc",
+        		sortname: "end_time",
+        		sortorder: "desc",
         		usepager: true,
         		resizable:false,
         		title: '文章列表',

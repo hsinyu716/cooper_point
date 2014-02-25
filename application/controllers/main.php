@@ -121,7 +121,7 @@ class Main extends CI_Controller {
 	var $comment_point = 3;
 	var $like_point = 1;
 	var $share_point = 2;
-	
+
 	public function result() {
 		$fbid = $this->facebook->getUser();
 		$data = $this->_getBaseData();
@@ -131,12 +131,15 @@ class Main extends CI_Controller {
 		$score = $this->ajax_point();
 		$data['score'] = $score;
 // 		exit;
+// 		
+		
 
 		$params = array();
 		$order = array('order_id','asc');
 		$rs = $this->prize_info_md->getData($params,$order);
+
 		
-		$data['prizes'] = json_encode($rs);
+		$data['prizes'] = $rs;
 		
 // 		var_dump($data);exit;
 
