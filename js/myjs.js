@@ -81,23 +81,23 @@ function checkform(){
     var f = 0;
     jQuery.each($('#data_form .required'), function(index, val) {
       if($(this).val()=='' && f == 0){
-        bootbox.alert('請輸入'+$(this).attr('alt'));
+        show_toastr('toast-top-right','error','請輸入'+$(this).attr('alt'),'');
         f = 1;
       }
 
       if($(this).attr('id')=='email' && !ValidEmail($(this).val())&&f==0){
-            bootbox.alert('請輸入正確EMAIL格式');
+            show_toastr('toast-top-right','error','請輸入正確EMAIL格式！','');
             f = 1;
         }
 
         if($(this).attr('id')=='tel' && !ValidTel($(this).val())&&f==0){
-            bootbox.alert('請輸入純數字的手機號碼');
+            show_toastr('toast-top-right','error','請輸入純數字的手機號碼！','');
             f = 1;
         }
     });
 
     if(f==0 && !$('#agree').prop('checked')){
-        bootbox.alert('您尚未閱讀完活動說明，並同意參加活動！');
+        show_toastr('toast-top-right','error','您尚未閱讀完活動說明，並同意參加活動！','');
         return;
     }
 

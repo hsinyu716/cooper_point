@@ -131,6 +131,6 @@
         <div id="content">
             <?php print $content ?>
         </div>
-        <div style="clear:both;text-align:center;height:30px;"><a target="_blank" style="color:#aaa; font-size: 10px; text-decoration: none; margin-buttom:50px;" href="<?=WEB_HOST?>privacy_policy.html">Privacy Policy</a></div>
+        <div style="clear:both;text-align:center;height:30px;"><a target="_blank" style="color:#aaa; font-size: 10px; text-decoration: none; margin-buttom:50px;" href="//mr6fb.com/policy/privacy.html">Privacy Policy</a></div>
     </body>
 </html>
